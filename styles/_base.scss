@@ -1,0 +1,46 @@
+// Variables
+
+$color-principal: rgb(120,120,120);
+$color-secundario: rgb(255,0,0);
+$border: 2px solid $color-secundario;
+$borderHover: 2px solid $color-principal;
+$fontFamily:Inconsolata,sans-serif;
+
+
+
+// mixings
+@mixin fontsize($min, $ref, $max){
+    font-size: clamp($min,$ref,$max);
+}
+
+@mixin flex ($direction, $gap, $wrap){
+    display: flex;
+    flex-direction: $direction;
+    gap: $gap;
+    flex-wrap: $wrap;
+}
+
+@mixin grid($min, $rowGap, $colGap){
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax($min,1fr));
+    row-gap: $rowGap;
+    column-gap: $colGap;
+}
+
+@mixin hover(){
+    @media(hover:hover){
+        @content;
+
+    }
+}
+
+@mixin media($media){
+    @media(max-width:$media){
+        @content;
+    }
+
+}
+
+
+
+

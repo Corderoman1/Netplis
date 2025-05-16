@@ -1,0 +1,52 @@
+.nav__flex {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.nav__title {
+  font-size: 40px;
+}
+.nav__titleSpan {
+  font-weight: 900;
+}
+.nav__logoSvg {
+  display: inline-block;
+  width: 40px;
+}
+.nav__ul {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.container {
+  max-width: 1200px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.btn-normal {
+  display: block;
+  max-width: 100px;
+  width: 80%;
+  height: 40px;
+  color: rgb(120, 120, 120);
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 0 0 0;
+  border-radius: 10px;
+  background-color: rgb(255, 0, 0);
+  border: 2px solid rgb(255, 0, 0);
+  transition: 0.2s;
+}
+
+@media (hover: hover) {
+  .btn-normal:hover {
+    background-color: aqua;
+    border: 2px solid rgb(120, 120, 120);
+  }
+}/*# sourceMappingURL=main.css.map */

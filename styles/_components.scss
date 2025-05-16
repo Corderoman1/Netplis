@@ -1,0 +1,32 @@
+
+.container{
+    max-width: 1200px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.btn-normal{
+    display: block;
+    max-width: 100px;
+    width: 80%;
+    height: 40px;
+    color: $color-principal;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 0 0 0;
+    border-radius: 10px;
+    background-color: $color-secundario;
+    border: $border;
+    transition: .2s;
+}
+@include hover{
+    .btn-normal:hover{
+        background-color: aqua;
+        border: $borderHover;
+    }
+}
+
+%navigation{
+    @include flex (row, 0, no-wrap);
+    justify-content: space-between;
+}
