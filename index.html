@@ -3,37 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@99.9,200..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/Normalize.css">
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/main.css">
+    <script src="js/main.js" async></script>
     <link rel="favicon" href="#">
     <title>Netplis</title>
 </head>
 <body>
-    <header>
-        <nav class="nav">
-            <div class="container">
-                <div class="nav__flex">
-                    <h1 class="nav__title">Net<span class="nav__titleSpan">Plis<img src="img/logo.svg" alt="logo" class="nav__logoSvg"></span></h1>
-                    <ul class="nav__ul">
-                        <li class="nav__links"><a href="#" class="nav__link">login</a></li>
-                        <li class="nav__links"><a href="#" class="nav__link">user</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <header class="header">
+        <img src="img/fighter-close-up-portrait-before-fight.jpg" alt="" class="header__bgimg imgShown">
+        <img src="img/horror.jpg" alt="" class="header__bgimg ">
+        <img src="img/romance.jpg" alt="" class="header__bgimg ">
+        <img src="img/suspense.jpg" alt="" class="header__bgimg ">
+        <img src="img/comedy.JPG" alt="" class="header__bgimg ">
 
-        
+        <div class="header__content">
+            <p class="autor">corderoMan</p>
+            <h1 class="header__title">Bienvenido a NetPlis</h1>
+            <p class="header__slo">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi temporibus dolore nihil esse adipisci ratione, suscipit hic rerum expedita cumque ipsum asperiores odio vitae sapiente a amet autem necessitatibus minima sint quidem, ab consequatur maxime in dolor. Quia soluta accusamus voluptatem hic, aliquam iusto quae, quisquam tempora, magni placeat ducimus?</p>
+
+            <button class="header__subscribe" id="login">Subscribe</button>
+            
+        </div>
+
+
+
     </header>
     <main>
+        <section class="well">
+            <div class="container">
+                <div class="well__flex">
+                    <div class="well__logo">
+                        <h2>net<span>Plis</span></h2>
+                        <i><img src="img/logo.svg" alt=""></i>
+                    </div>
+                    <h2 class="well__user">Hola, <span id="well-user">User</span></h2>
+                </div>
+            </div>
+        </section>
 
+        <section class="mov">
+            <aside class="mov__nav">
+                <input type="text" class="mov__search">
+                <button class="mov__searchBotton">Buscar</button>
+                <ul class="mov__ul">
+                    <li class="mov__li">Option1</li>
+                    <li class="mov__li">Option1</li>
+                    <li class="mov__li">Option1</li>
+                    <li class="mov__li">Option1</li>
+                </ul>
+            </aside>
+            <article class="mov__grid">
+                <div class="mov__card">
+                    <i class="mov__cardImg"><img src="img/ejemplo de movie.jpg" alt=""></i>
+                    <p class="mov__title">Titulo de la peli</p>
+                    <div class="mov__categoryFlex">
+                        <span class="mov__cardcategory mov__cardcategory--drama">cate1</span><span class="mov__cardcategory mov__cardcategory--terror">cate2</span><span class="mov__cardcategory mov__cardcategory--romance">cate3</span>
+                    </div>
+                    <button class="mov__cardButton">VER MAS</button>
+                </div>
+                <div class="mov__card">
+                    <i class="mov__cardImg"><img src="img/ejemplo de movie.jpg" alt=""></i>
+                     <p class="mov__title">Titulo de la peli</p>
+                    <div class="mov__categoryFlex">
+                        <span class="mov__cardcategory mov__cardcategory--drama">cate1</span><span class="mov__cardcategory mov__cardcategory--terror">cate2</span><span class="mov__cardcategory mov__cardcategory--romance">cate3</span>
+                    </div>
+                    <button class="mov__cardButton">VER MAS</button>
+                </div>
+            </article>
+        </section>
     </main>
     <footer>
-
+        <br>
+        <hr>
+        <p>&copy; Creado por CorderoMan</p>
     </footer>
 
+<!-- <div class="modallogin">
+    <div class="modallogin__flex">
+        <form action="" class="modallogin__form">
+            <label for="name" class="modallogin__formName">Usuario</label>
+            <input type="text" name="name" placeholder="Usuario" class="modallogin__input">
+            <input type="submit" value="Ingresar" class="modallogin__submit btn-normal">
+        </form>
+    </div>
+</div> -->
 </body>
 </html>

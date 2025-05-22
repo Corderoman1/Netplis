@@ -1,20 +1,184 @@
-.nav{
-    &__flex{
-        @include flex (row, 0, nowrap);
-        justify-content: space-between;
+.header{
+    height: 100vh;
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+
+    &__bgimg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -100px;
+    filter: blur(100px);
+    object-fit: cover;
+    }
+    &__content{
+        position: absolute;
+        z-index: 100;
+        max-width: 90%;
+        width: 800px;
+        top: 200px;
+        left: 100px;
+        color: #fff;
+        padding: 10px;
+        box-sizing: border-box;
+        @include media(40rem){
+            top: 100px;
+            left: 50px;
+        }   
     }
     &__title{
-        font-size: 40px;
-        &Span{
-            font-weight: 900;
+        margin-bottom: 40px;
+    }
+    &__slo{
+        margin-bottom: 40px;
+    }
+    &__subscribe{
+        width: 200px;
+        height: 40px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        letter-spacing: 5px;
+        font-family: Poppins;
+        font-weight: bold;
+        color: #000;
+        transition: .5s;
+        &:hover{
+            background-color: transparent;
+            color: #eee;
+            border: 2px solid #fff;
         }
     }
-    &__logoSvg{
-        display: inline-block;
-        width: 40px;
+}
+
+
+
+.well{
+    background-color: $bgcolor;
+    &__flex{
+        display: flex;
+        justify-content: space-between;
     }
-    &__ul{
-        @include flex (row, 40px, nowrap);
-        align-items: center;
+}
+
+.mov{
+    height: 100svh;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+
+    &__nav{
+        padding: 10px;
+        box-sizing: border-box;
+        height: 100%;
+        background-color: #000;
+        color: #fff;
+        background-color: $bgcolor;
+    }
+    &__li{
+        margin: 60px -10px 0 40px;
+        height: 40px;
+        box-sizing: border-box;
+        padding: 10px 0;
+        text-decoration: none;
+        color: #fff;
+        cursor: pointer;
+
+        &--active{
+            background-color: $bgcolorSecon;
+            position: relative;
+            border-radius: 20px 0 0 20px;
+            box-sizing: border-box;
+            padding-left: 20px;
+
+
+            &::before{
+                content: "";
+                text-decoration: none;
+                height: 10px;
+                width: 10px;
+                background-color: $bgcolor;
+                position: absolute;
+                right: 0;
+                top: -10px;
+                border-radius: 0 0 10px 0;
+                box-shadow: 5px 5px 0 5px $bgcolorSecon;
+            }
+            &::after{
+                content: "";
+                height: 10px;
+                width: 10px;
+                background-color: $bgcolor;
+                position: absolute;
+                right: 0;
+                bottom: -10px;
+                border-radius: 0 10px 0 0;
+                box-shadow: 5px -5px 0 5px $bgcolorSecon;
+            }
+
+        }
+
+    }
+    &__grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        padding: 10px;
+        background-color: $bgcolorSecon;
+        gap: 10px;
+    }
+    &__card{
+        border: 1px solid #000;
+        height: 450px;
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        background-color: #2e87a186;
+    }
+    &__title{
+        font-family: Poppins;
+        letter-spacing: 2px;
+        font-weight: 900;
+
+    }
+    &__categoryFlex{
+        display: flex;
+        justify-content: space-around;
+        margin: 20px 0;
+    }
+    &__cardcategory{
+        display: block;
+        height: 20px;
+        width: 60px;
+        border-radius: 10px;
+        text-align: center;
+        border: 1px solid #000;
+        &--drama{
+            background-color: #08fde9c3;
+            color: #cecece;
+        }
+        &--romance{
+            background-color: #fd0808c3;
+            color: #fff;
+        }
+        &--terror{
+            background-color: #000000;
+            color: #fff;
+        }
+
+    }
+    &__cardButton{
+        display: block;
+        margin: 0 auto;
+        width: 80%;
+        border-radius: 10px;
+        height: 40px;
+        background-color: aqua;
+        cursor: pointer;
+        font-family: Popins;
+        letter-spacing: 2px;
+        transition: all .5s;
+        &:hover{
+            background-color: transparent;
+        }
     }
 }
