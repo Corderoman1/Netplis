@@ -66,14 +66,17 @@
     height: 100svh;
     display: grid;
     grid-template-columns: 300px 1fr;
-
+    overflow-y: scroll;
+    overflow-x: hidden;
     &__nav{
         padding: 10px;
         box-sizing: border-box;
-        height: 100%;
+        max-height: 100svh;
         background-color: #000;
         color: #fff;
         background-color: $bgcolor;
+        position: sticky;
+        top: 0;
     }
     &__li{
         margin: 60px -10px 0 40px;
@@ -83,6 +86,9 @@
         text-decoration: none;
         color: #fff;
         cursor: pointer;
+        &:nth-child(1){
+            height: 50px;
+        }
 
         &--active{
             background-color: $bgcolorSecon;
@@ -125,6 +131,7 @@
         padding: 10px;
         background-color: $bgcolorSecon;
         gap: 10px;
+        border-radius: 10px;
     }
     &__card{
         border: 1px solid #000;
@@ -152,15 +159,15 @@
         border-radius: 10px;
         text-align: center;
         border: 1px solid #000;
-        &--drama{
+        &--Drama{
             background-color: #08fde9c3;
             color: #cecece;
         }
-        &--romance{
+        &--Romance{
             background-color: #fd0808c3;
             color: #fff;
         }
-        &--terror{
+        &--Terror{
             background-color: #000000;
             color: #fff;
         }
@@ -173,12 +180,21 @@
         border-radius: 10px;
         height: 40px;
         background-color: aqua;
+        box-sizing: border-box;
+        padding-top: 10px;
+        text-align: center;
         cursor: pointer;
         font-family: Popins;
         letter-spacing: 2px;
         transition: all .5s;
+        text-decoration: none;
+        border: 1px solid #fff;
+        color: #fff;
         &:hover{
             background-color: transparent;
+        }
+        &:visited{
+            background-color: $bgcolor;
         }
     }
 }

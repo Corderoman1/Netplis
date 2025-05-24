@@ -69,19 +69,55 @@ function hideLoginModal(){
 
 const loadMovies = async () =>{
     console.log('tamoaqui');
-    
+    const movGrid = document.getElementById("grid")
     try{
-
-        const response = await axios.get("https://api.tvmaze.com/shows/1",{params:{limit:2}})
-        console.log(response);
+        const response = await axios.get("https://api.tvmaze.com/shows")
+        const movies = response.data
+        movGrid.innerHTML = ''
+        for(const movie of movies){
+            movieCard = createMovieCard(movie)
+            movGrid.appendChild(movieCard)
+        }
     }catch(error){
-        console.log("tenemos un error");
-        
+        console.log(error); 
     }
-    
 }
 
 document.addEventListener("DOMContentLoaded",loadMovies)
+function createMovieCard(movie){
+    const movCard = document.createElement("div")
+    const movImageContainer = document.createElement("i")
+    const movImage = document.createElement("img")
+    const movTitle = document.createElement("p")
+    const movCategoryFlex = document.createElement("div")
+    const movCardButton = document.createElement("a")
+    movCard.classList.add("mov__card")
+    movImageContainer.classList.add("mov__cardImg")
+    movImage.src = movie.image.medium
+    movImage.alt = `image of ${movie.name}`
+    movImageContainer.appendChild(movImage)
+    movTitle.classList.add("mov__title")
+    movTitle.textContent = movie.name
+    movCategoryFlex.classList.add("mov__categoryFlex")
+    movCardButton.textContent = "VER MAS"
+    movCardButton.classList.add("mov__cardButton")
+    movCardButton.href = `showdetails.html?id=${movie.id}`
+    movCardButton.target = "_blank"
+    movie.genres.forEach(element => {
+        console.log(element);
+        const movcardcategory = document.createElement("span")
+        movcardcategory.textContent = element
+        movcardcategory.classList.add(`mov__cardcategory`)
+        movcardcategory.classList.add(`mov__cardcategory--${element}`)
+        movCategoryFlex.appendChild(movcardcategory)
+    })
+    movCard.appendChild(movImageContainer)
+    movCard.appendChild(movTitle)
+    movCard.appendChild(movCategoryFlex)
+    movCard.appendChild(movCardButton)
+    return movCard
+    
+}
 
 function changeImg() {
     bgImg.forEach(element => {

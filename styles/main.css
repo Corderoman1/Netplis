@@ -66,14 +66,18 @@
   height: 100svh;
   display: grid;
   grid-template-columns: 300px 1fr;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .mov__nav {
   padding: 10px;
   box-sizing: border-box;
-  height: 100%;
+  max-height: 100svh;
   background-color: #000;
   color: #fff;
   background-color: #5b4c69;
+  position: sticky;
+  top: 0;
 }
 .mov__li {
   margin: 60px -10px 0 40px;
@@ -83,6 +87,9 @@
   text-decoration: none;
   color: #fff;
   cursor: pointer;
+}
+.mov__li:nth-child(1) {
+  height: 50px;
 }
 .mov__li--active {
   background-color: #533e67;
@@ -120,6 +127,7 @@
   padding: 10px;
   background-color: #533e67;
   gap: 10px;
+  border-radius: 10px;
 }
 .mov__card {
   border: 1px solid #000;
@@ -147,15 +155,15 @@
   text-align: center;
   border: 1px solid #000;
 }
-.mov__cardcategory--drama {
+.mov__cardcategory--Drama {
   background-color: rgba(8, 253, 233, 0.7647058824);
   color: #cecece;
 }
-.mov__cardcategory--romance {
+.mov__cardcategory--Romance {
   background-color: rgba(253, 8, 8, 0.7647058824);
   color: #fff;
 }
-.mov__cardcategory--terror {
+.mov__cardcategory--Terror {
   background-color: #000000;
   color: #fff;
 }
@@ -166,13 +174,22 @@
   border-radius: 10px;
   height: 40px;
   background-color: aqua;
+  box-sizing: border-box;
+  padding-top: 10px;
+  text-align: center;
   cursor: pointer;
   font-family: Popins;
   letter-spacing: 2px;
   transition: all 0.5s;
+  text-decoration: none;
+  border: 1px solid #fff;
+  color: #fff;
 }
 .mov__cardButton:hover {
   background-color: transparent;
+}
+.mov__cardButton:visited {
+  background-color: #5b4c69;
 }
 
 .container {
