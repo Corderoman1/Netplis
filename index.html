@@ -50,16 +50,21 @@
         <section class="mov">
             <aside class="mov__nav">
 
-                <ul class="mov__ul">
+                <ul class="mov__ul" id="filterText">
                     <li class="mov__li">
                         <input type="text" class="mov__search" placeholder="Buscar">
                         <button class="mov__searchBotton">b</button>
                         
                     </li>
-                    <li class="mov__li">Option1</li>
-                    <li class="mov__li">Option1</li>
-                    <li class="mov__li">Option1</li>
+                    <li class="mov__li mov__li--active" hidden>all</li>
+                    <li class="mov__li">Thriller</li>
+                    <li class="mov__li">Comedy</li>
+                    <li class="mov__li">Drama</li>
                 </ul>
+                <div class="mov__pageNav">
+                    <p class="mov__pageNavPre"><</p>
+                    <p class="mov__pageNavNex">></p>
+                </div>
             </aside>
             <article class="mov__grid " id="grid">
                 <div class="mov__card">

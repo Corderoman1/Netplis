@@ -6,6 +6,40 @@ const linkLogin = document.getElementById("login")
 let counter = 0
 const bgImg = document.querySelectorAll(".header__bgimg")
 const asideOption = document.querySelectorAll(".mov__li")
+const prevPage = document.querySelector(".mov__pageNavPre")
+const nextPage = document.querySelector(".mov__pageNavNex")
+let movies = {}
+let pageCounter = 0
+
+
+const loadMovies = async () =>{
+    const movGrid = document.getElementById("grid")
+    let filterText = document.querySelector('.mov__li--active')
+    filterText = filterText.textContent
+    console.log(filterText);
+    
+    try{
+        const response = await axios.get("https://api.tvmaze.com/shows",{params:{page:pageCounter}})
+        movies = response.data
+        movGrid.innerHTML = ''
+        for(const movie of movies){
+            if(filterText = "all"){
+                movieCard = createMovieCard(movie)
+                movGrid.appendChild(movieCard)
+            }else{
+                if(movie.genres.includes(filterText)){
+                    movieCard = createMovieCard(movie)
+                    movGrid.appendChild(movieCard)
+                }
+            }
+        }
+    }catch(error){
+        console.log(error);
+        
+    }
+}
+
+document.addEventListener("DOMContentLoaded",loadMovies)
 
 asideOption.forEach(element => {
     element.addEventListener("click",() => {
@@ -13,7 +47,9 @@ asideOption.forEach(element => {
         option.classList.remove("mov__li--active")
     })
         element.classList.add("mov__li--active")
+        loadMovies()
     })
+
 })
 
 linkLogin.addEventListener("click", (e) => {
@@ -67,23 +103,11 @@ function hideLoginModal(){
 
 
 
-const loadMovies = async () =>{
-    console.log('tamoaqui');
-    const movGrid = document.getElementById("grid")
-    try{
-        const response = await axios.get("https://api.tvmaze.com/shows")
-        const movies = response.data
-        movGrid.innerHTML = ''
-        for(const movie of movies){
-            movieCard = createMovieCard(movie)
-            movGrid.appendChild(movieCard)
-        }
-    }catch(error){
-        console.log(error); 
-    }
-}
 
-document.addEventListener("DOMContentLoaded",loadMovies)
+
+
+
+
 function createMovieCard(movie){
     const movCard = document.createElement("div")
     const movImageContainer = document.createElement("i")
@@ -104,7 +128,6 @@ function createMovieCard(movie){
     movCardButton.href = `showdetails.html?id=${movie.id}`
     movCardButton.target = "_blank"
     movie.genres.forEach(element => {
-        console.log(element);
         const movcardcategory = document.createElement("span")
         movcardcategory.textContent = element
         movcardcategory.classList.add(`mov__cardcategory`)
@@ -131,3 +154,29 @@ function changeImg() {
     }
 }
 setInterval(changeImg,9100)
+
+
+
+function chargePage(type){
+    
+    if(type == "decrease"){
+        if(pageCounter != 0){
+            pageCounter --
+        }
+    }else if(type == "increase"){
+        if(pageCounter != 10){
+            pageCounter ++
+        }
+    }
+    loadMovies()
+}
+
+
+prevPage.addEventListener("click",()=>{
+   chargePage("decrease");
+    
+})
+nextPage.addEventListener("click",()=>{
+   chargePage("increase");
+    
+})
