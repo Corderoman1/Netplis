@@ -8,8 +8,46 @@ const bgImg = document.querySelectorAll(".header__bgimg")
 const asideOption = document.querySelectorAll(".mov__li")
 const prevPage = document.querySelector(".mov__pageNavPre")
 const nextPage = document.querySelector(".mov__pageNavNex")
+const buscarButton = document.querySelector(".mov__searchBotton")
 let movies = {}
 let pageCounter = 0
+const genresIcons = new Map ([
+    ["Thriller", "😬"],
+    ["Romance", "💖"],
+    ["Horror", "😱"],
+    ["Comedy", "😂"],
+    ["Action", "🥷"],
+    ["Drama", "😭"],
+    ["Adventure", "🧗"],
+    ["Science-Fiction", "🛰️"],
+    ["Crime", "🚨"],
+    ["Legal", "📃"],
+    ["Medical", "🧑‍⚕️"],
+    ["War", "🪖"],
+])
+
+buscarButton.addEventListener("click",()=>{
+    const input = document.getElementById("searchContent")
+    if(input.value != ""){
+        searchMovie(input.value)
+    }
+
+})
+const searchMovie = async (value) => {
+    console.log(value);
+    const movGrid = document.getElementById("grid")
+    try{
+        const response = await axios.get("https://api.tvmaze.com/singlesearch/shows",{params:{q:value}})
+        movie = response.data
+        movGrid.innerHTML = ''
+            movieCard = createMovieCard(movie)
+            movGrid.appendChild(movieCard)
+    }
+    catch(error){
+        movGrid.innerHTML = '<h1>Lo sentimos no encontramos nada</h1>'
+        
+    }
+}
 
 
 const loadMovies = async () =>{
@@ -24,11 +62,10 @@ const loadMovies = async () =>{
         movGrid.innerHTML = ''
         
         for(const movie of movies){
-
-            if(filterText == "all"){
+            
+            if(filterText == "All"){
                 movieCard = createMovieCard(movie)
                 movGrid.appendChild(movieCard)
-                console.log('tamoaqui');
                 
             }else{
                 if(movie.genres.includes(filterText)){
@@ -134,11 +171,13 @@ function createMovieCard(movie){
     movCardButton.href = `showdetails.html?id=${movie.id}`
     movCardButton.target = "_blank"
     movie.genres.forEach(element => {
-        const movcardcategory = document.createElement("span")
-        movcardcategory.textContent = element
-        movcardcategory.classList.add(`mov__cardcategory`)
-        movcardcategory.classList.add(`mov__cardcategory--${element}`)
-        movCategoryFlex.appendChild(movcardcategory)
+        if(genresIcons.get(element)){  
+            const movcardcategory = document.createElement("span")
+            movcardcategory.textContent = genresIcons.get(element) + element
+            movcardcategory.classList.add(`mov__cardcategory`)
+            movcardcategory.classList.add(`mov__cardcategory--${element}`)
+            movCategoryFlex.appendChild(movcardcategory)
+        }
     })
     movCard.appendChild(movImageContainer)
     movCard.appendChild(movTitle)

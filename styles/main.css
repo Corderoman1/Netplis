@@ -37,7 +37,8 @@
   }
 }
 .header__title {
-  margin-bottom: 40px;
+  margin-bottom: 10px 0 0 40px;
+  text-wrap-mode: nowrap;
 }
 .header__slo {
   margin-bottom: 40px;
@@ -123,6 +124,7 @@
   background-color: #5b4c69;
   position: sticky;
   top: 0;
+  width: 100%;
 }
 .mov__li {
   margin: 60px -10px 0 40px;
@@ -201,11 +203,19 @@
 }
 .mov__card {
   border: 1px solid #000;
-  height: 450px;
   padding: 10px;
   box-sizing: border-box;
   border-radius: 10px;
   background-color: rgba(46, 135, 161, 0.5254901961);
+  height: 500px;
+}
+.mov__cardImg {
+  display: block;
+  max-width: 250px;
+  margin: 0 auto;
+}
+.mov__cardImg img {
+  width: 100%;
 }
 .mov__title {
   font-family: Poppins;
@@ -219,23 +229,14 @@
 }
 .mov__cardcategory {
   display: block;
-  height: 20px;
-  width: 60px;
+  height: 30px;
+  width: 70px;
   border-radius: 10px;
   text-align: center;
   border: 1px solid #000;
-}
-.mov__cardcategory--Drama {
-  background-color: rgba(8, 253, 233, 0.7647058824);
-  color: #cecece;
-}
-.mov__cardcategory--Romance {
-  background-color: rgba(253, 8, 8, 0.7647058824);
-  color: #fff;
-}
-.mov__cardcategory--Terror {
-  background-color: #000000;
-  color: #fff;
+  font-size: 10px;
+  box-sizing: border-box;
+  padding-top: 5px;
 }
 .mov__cardButton {
   display: block;
