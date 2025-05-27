@@ -14,18 +14,22 @@ let pageCounter = 0
 
 const loadMovies = async () =>{
     const movGrid = document.getElementById("grid")
+
     let filterText = document.querySelector('.mov__li--active')
     filterText = filterText.textContent
-    console.log(filterText);
     
     try{
         const response = await axios.get("https://api.tvmaze.com/shows",{params:{page:pageCounter}})
         movies = response.data
         movGrid.innerHTML = ''
+        
         for(const movie of movies){
-            if(filterText = "all"){
+
+            if(filterText == "all"){
                 movieCard = createMovieCard(movie)
                 movGrid.appendChild(movieCard)
+                console.log('tamoaqui');
+                
             }else{
                 if(movie.genres.includes(filterText)){
                     movieCard = createMovieCard(movie)
@@ -41,16 +45,24 @@ const loadMovies = async () =>{
 
 document.addEventListener("DOMContentLoaded",loadMovies)
 
-asideOption.forEach(element => {
-    element.addEventListener("click",() => {
-        asideOption.forEach(option => {
-        option.classList.remove("mov__li--active")
-    })
-        element.classList.add("mov__li--active")
-        loadMovies()
-    })
+// asideOption.forEach(element => {
+//     element.addEventListener("click",(e) => {
+//         asideFiltering(e.target)
+//     })
+// })
 
-})
+for(option of asideOption){
+    option.addEventListener("click",(e)=>{
+        asideFiltering(e.target)
+    })
+}
+function asideFiltering(element){
+    for(option of asideOption){
+        option.classList.remove("mov__li--active")
+    }
+    element.classList.add("mov__li--active")
+    loadMovies()
+}
 
 linkLogin.addEventListener("click", (e) => {
     e.preventDefault
@@ -100,12 +112,6 @@ function hideLoginModal(){
      const loginModal = document.querySelector(".modallogin")
      loginModal.remove()
 }
-
-
-
-
-
-
 
 
 function createMovieCard(movie){
@@ -173,10 +179,9 @@ function chargePage(type){
 
 
 prevPage.addEventListener("click",()=>{
-   chargePage("decrease");
+   chargePage("decrease")
     
 })
 nextPage.addEventListener("click",()=>{
-   chargePage("increase");
-    
+   chargePage("increase")
 })
