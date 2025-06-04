@@ -1,3 +1,11 @@
+.logoff {
+  overflow: hidden;
+}
+
+.login {
+  overflow: hidden scroll;
+}
+
 .header {
   height: 100vh;
   background-color: #000;
@@ -42,6 +50,14 @@
 }
 .header__slo {
   margin-bottom: 40px;
+  display: none;
+}
+.header__slo span {
+  font-weight: 900;
+  font-size: 2em;
+}
+.header__slo--show {
+  display: block;
 }
 .header__subscribe {
   width: 200px;
@@ -111,9 +127,40 @@
 .mov {
   height: 100svh;
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 300px 0px 1fr;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+.mov__searchInput {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  height: 30px;
+  letter-spacing: 5px;
+  font-family: Poppins;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding-left: 10px;
+}
+.mov__searchInput:focus {
+  border-radius: 2px solid #f00;
+}
+.mov__searchBotton {
+  display: block;
+  width: 60%;
+  margin: 20px auto;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #533e67;
+  cursor: pointer;
+  box-shadow: 0 2px 5px #000;
+  transition: all 0.5s ease;
+}
+.mov__searchBotton:hover {
+  background-color: transparent;
+  color: #fff;
+  transform: translateY(-5px);
+  box-shadow: 0 7px 10px #000;
 }
 .mov__nav {
   padding: 10px;
@@ -125,9 +172,11 @@
   position: sticky;
   top: 0;
   width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .mov__li {
-  margin: 60px -10px 0 40px;
+  margin: 40px -10px 0 40px;
   height: 40px;
   box-sizing: border-box;
   padding: 10px 0;
@@ -193,6 +242,29 @@
   background-color: #fff;
   color: #000;
 }
+.mov__displayMenu {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: rgba(153, 153, 153, 0.3333333333);
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 10px;
+  cursor: pointer;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 900;
+  transition: all 0.5s ease;
+}
+.mov__displayMenu:hover {
+  background-color: #fff;
+  color: #000;
+}
 .mov__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -201,6 +273,16 @@
   gap: 10px;
   border-radius: 10px;
 }
+.mov__incharge {
+  background-color: #533e67;
+  text-align: center;
+}
+.mov__incharge img {
+  width: 50%;
+}
+.mov__incharge h2 {
+  font-size: clamp(15px, 2.5vw, 3vw);
+}
 .mov__card {
   border: 1px solid #000;
   padding: 10px;
@@ -208,6 +290,7 @@
   border-radius: 10px;
   background-color: rgba(46, 135, 161, 0.5254901961);
   height: 500px;
+  animation: showCard 0.5s ease forwards;
 }
 .mov__cardImg {
   display: block;
@@ -263,6 +346,16 @@
   background-color: #5b4c69;
 }
 
+@keyframes showCard {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX();
+  }
+}
 .container {
   max-width: 1200px;
   width: 95%;
@@ -319,8 +412,6 @@
   position: absolute;
   right: 0;
   z-index: 100;
-  animation: name duration timing-function delay iteration-count direction fill-mode;
-  animation: showImg 9s ease 1s 1 forwards;
 }
 
 @keyframes showImg {

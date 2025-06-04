@@ -1,14 +1,14 @@
 
-// console.log('tamoaqui');
-// console.log(window.location.search);
+
+// localStorage.setItem("user","")
 let user = localStorage.getItem("user")
 const linkLogin = document.getElementById("login")
 let counter = 0
-const bgImg = document.querySelectorAll(".header__bgimg")
 const asideOption = document.querySelectorAll(".mov__li")
 const prevPage = document.querySelector(".mov__pageNavPre")
 const nextPage = document.querySelector(".mov__pageNavNex")
 const buscarButton = document.querySelector(".mov__searchBotton")
+const movIncharge = document.getElementById("grid")
 let movies = {}
 let pageCounter = 0
 const genresIcons = new Map ([
@@ -26,26 +26,50 @@ const genresIcons = new Map ([
     ["War", "🪖"],
 ])
 
+
+
 buscarButton.addEventListener("click",()=>{
     const input = document.getElementById("searchContent")
     if(input.value != ""){
         searchMovie(input.value)
     }
-
 })
+
+if(user == ""){
+    const body = document.getElementById("body")
+    body.classList.add("logoff")
+    body.classList.remove("login")
+}else{
+    const body = document.getElementById("body")
+    const wellUser = document.getElementById("well-user")
+    const headerTitle = document.querySelector(".header__title")
+    body.classList.remove("logoff")
+    body.classList.add("login")
+    wellUser.textContent = user
+    headerTitle.textContent = `Hola, ${user}. Que vemos ahora?`
+    window.scrollTo(0,832.7999877929688)
+}
 const searchMovie = async (value) => {
-    console.log(value);
     const movGrid = document.getElementById("grid")
     try{
-        const response = await axios.get("https://api.tvmaze.com/singlesearch/shows",{params:{q:value}})
-        movie = response.data
+        const response = await axios.get("https://api.tvmaze.com/search/shows",{params:{q:value}})
+        console.log(response);
+        
+        movGrid.classList.remove("mov__incharge")
+        movGrid.classList.add("mov__grid")
+        movies = response.data
         movGrid.innerHTML = ''
-            movieCard = createMovieCard(movie)
-            movGrid.appendChild(movieCard)
+        if(movies.length != 0){
+            for(movie of movies){
+                movieCard = createMovieCard(movie.show)
+                movGrid.appendChild(movieCard)
+            }
+        }else{
+             movGrid.innerHTML = `Lo sentimos, no encontramos nada para ${value}`
+        }
     }
     catch(error){
-        movGrid.innerHTML = '<h1>Lo sentimos no encontramos nada</h1>'
-        
+        console.log(error);
     }
 }
 
@@ -58,6 +82,8 @@ const loadMovies = async () =>{
     
     try{
         const response = await axios.get("https://api.tvmaze.com/shows",{params:{page:pageCounter}})
+        movGrid.classList.remove("mov__incharge")
+        movGrid.classList.add("mov__grid")
         movies = response.data
         movGrid.innerHTML = ''
         
@@ -68,14 +94,14 @@ const loadMovies = async () =>{
                 movGrid.appendChild(movieCard)
                 
             }else{
-                if(movie.genres.includes(filterText)){
+                if( movie.genres.includes(filterText)){
                     movieCard = createMovieCard(movie)
                     movGrid.appendChild(movieCard)
                 }
             }
         }
     }catch(error){
-        console.log(error);
+        movGrid.innerHTML = movIncharge
         
     }
 }
@@ -105,7 +131,6 @@ linkLogin.addEventListener("click", (e) => {
     e.preventDefault
     showLoginModal()
 })
-console.log(user);
 
 function showLoginModal(){
     const body = document.querySelector("body")
@@ -124,8 +149,8 @@ function showLoginModal(){
     inputText.setAttribute("placeholder","Usuario")
     inputText.classList.add("modallogin__input")
     const inputSubmit = document.createElement("input")
-    inputSubmit.setAttribute("type","submit")
-    inputSubmit.setAttribute("value","Ingresar")
+    inputSubmit.type = "submit"
+    inputSubmit.value = "Ingresar"
     inputSubmit.classList.add("modallogin__submit","btn-normal")
     form.appendChild(labelUser)
     form.appendChild(inputText)
@@ -134,20 +159,21 @@ function showLoginModal(){
     modallogin.appendChild(modalFlex)
     body.appendChild(modallogin)
 
-    modallogin.addEventListener("mousedown",hideLoginModal)
 
     inputSubmit.addEventListener("click",(e)=> {
         e.preventDefault()
         if(inputText.value !== ""){
+            localStorage.setItem("user",inputText.value)
             user = inputText.value
         }
-
+        hideLoginModal()
     })
 }
 
 function hideLoginModal(){
      const loginModal = document.querySelector(".modallogin")
      loginModal.remove()
+     location.reload()
 }
 
 
@@ -188,11 +214,23 @@ function createMovieCard(movie){
 }
 
 function changeImg() {
+    const bgImg = document.querySelectorAll(".header__bgimg")
+    const headerSlo = document.querySelectorAll(".header__slo")
+    
     bgImg.forEach(element => {
         element.classList.remove("imgShown")
     });
     bgImg[counter].classList.add("imgShown")
     if(counter == bgImg.length - 1){
+        counter = 0
+    }else{
+        counter ++
+    }
+    headerSlo.forEach(element => {
+        element.classList.remove("header__slo--show")
+    });
+    headerSlo[counter].classList.add("header__slo--show")
+    if(counter == headerSlo.length - 1){
         counter = 0
     }else{
         counter ++

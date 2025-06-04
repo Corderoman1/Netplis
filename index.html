@@ -14,18 +14,22 @@
     <link rel="favicon" href="#">
     <title>Netplis</title>
 </head>
-<body>
+<body id="body" class="logoff">
     <header class="header">
         <img src="img/fighter-close-up-portrait-before-fight.jpg" alt="" class="header__bgimg imgShown">
         <img src="img/horror.jpg" alt="" class="header__bgimg ">
         <img src="img/romance.jpg" alt="" class="header__bgimg ">
         <img src="img/suspense.jpg" alt="" class="header__bgimg ">
-        <img src="img/comedy.JPG" alt="" class="header__bgimg ">
+        <img src="img/comedy.JPG" alt="" class="header__bgimg ">    
 
         <div class="header__content">
             <p class="autor">corderoMan</p>
             <h1 class="header__title">Bienvenido a NetPlis</h1>
-            <p class="header__slo">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi temporibus dolore nihil esse adipisci ratione, suscipit hic rerum expedita cumque ipsum asperiores odio vitae sapiente a amet autem necessitatibus minima sint quidem, ab consequatur maxime in dolor. Quia soluta accusamus voluptatem hic, aliquam iusto quae, quisquam tempora, magni placeat ducimus?</p>
+            <p class="header__slo header__slo--show"><span>Accion?</span>Ponte tu costplay tactico para ambientarnos. las mejores peliculas de accion disponibles solo para ti. Prepara las palomitas antes de que pienses que es Rambo disparando</p>
+            <p class="header__slo "><span>Amante del terror?</span>Aqui encontraras las historias que haran tu corazon latir mas rapido que las palomitas. ADVERTENCIA⚠️ Revisas debajo de tu cama antes y despues de ver una de nuestras peliculas.</p>
+            <p class="header__slo "><span>Romance?❤️</span>Traite las palomitas, la soda, abraza a tu pareja y dale play a nuestras peliculas romanticas. Acompañanos en este viaje donde el amor siempre encuentra el camino.</p>
+            <p class="header__slo "><span>Suspenso? </span>⚠️⚠️⚠️ Advertencia--Cortate las uñas porque vas a rayar los muebles de la emocion. Con nuestra coleccion de suspenso quemaras mas calorias que en el gimnacio</p>
+            <p class="header__slo ">Un dia largo y tenso? Ponte una pelicula de comedia para que liberes endorfinas a carcajadas 🤣😂🤣</p>
 
             <button class="header__subscribe" id="login">Subscribe</button>
             
@@ -35,7 +39,7 @@
 
     </header>
     <main>
-        <section class="well">
+        <section class="well" id="well">
             <div class="container">
                 <div class="well__flex">
                     <div class="well__logo">
@@ -47,10 +51,10 @@
             </div>
         </section>
 
-        <section class="mov">
-            <aside class="mov__nav">
-                <div class="mov__search">
-                    <input type="text" class="mov__searchInput" placeholder="Buscar" class="mov__searchInput" id="searchContent">
+        <section class="mov mov--mobile">
+            <aside class="mov__nav mov__nav--mobile">
+                <div class="mov__search mov__nav--mobile">
+                    <input type="text" class="mov__searchInput" placeholder="Buscar" id="searchContent">
                     <button class="mov__searchBotton">Buscar</button>
                 </div>
                     
@@ -63,34 +67,24 @@
                     <li class="mov__li">Science-Fiction</li>
                 </ul>
                 <div class="mov__pageNav">
-                    <p class="mov__pageNavPre"><</p>
-                    <p class="mov__pageNavNex">></p>
+                    <p class="mov__pageNavPre">&lt;</p>
+                    <p class="mov__pageNavNex">&gt;</p>
                 </div>
+                <p class="mov__displayMenu">&gt;</p>
             </aside>
-            <article class="mov__grid " id="grid">
-                <div class="mov__card">
-                    <i class="mov__cardImg"><img src="img/ejemplo de movie.jpg" alt=""></i>
-                    <p class="mov__title">Titulo de la peli</p>
-                    <div class="mov__categoryFlex">
-                        <span class="mov__cardcategory mov__cardcategory--drama">cate1</span><span class="mov__cardcategory mov__cardcategory--terror">cate2</span><span class="mov__cardcategory mov__cardcategory--romance">cate3</span>
-                    </div>
-                    <a href="#" class="mov__cardButton" target="_blank">VER MAS</a>
-                </div>
-                <div class="mov__card">
-                    <i class="mov__cardImg"><img src="img/ejemplo de movie.jpg" alt=""></i>
-                     <p class="mov__title">Titulo de la peli</p>
-                    <div class="mov__categoryFlex">
-                        <span class="mov__ mov__cardcategory--drama">cate1</span><span class="mov__cardcategory mov__cardcategory--terror">cate2</span><span class="mov__cardcategory mov__cardcategory--romance">cate3</span>
-                    </div>
-                    <button class="mov__cardButton">VER MAS</button>
-                </div>
+            <article class="mov__incharge" id="grid">
+                <!-- mov__grid -->
+                <img src="img/logo.svg" alt="Logo" class="mov__incharge">
+                <h2 class="mov__inchargeTitle">Cargando...</h2>
             </article>
         </section>
     </main>
     <footer>
         <br>
         <hr>
-        <p>&copy; Creado por CorderoMan</p>
+        <div class="container">    
+            <p>&copy; Creado por CorderoMan</p>
+        </div>
     </footer>
 
 <!-- <div class="modallogin">
@@ -103,4 +97,4 @@
     </div>
 </div> -->
 </body>
-</html>cardcategory
+</html>
