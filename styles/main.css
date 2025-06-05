@@ -44,6 +44,12 @@
     left: 50px;
   }
 }
+@media (max-width: 30rem) {
+  .header__content {
+    top: 100px;
+    left: 25px;
+  }
+}
 .header__title {
   margin-bottom: 10px 0 0 40px;
   font-size: clamp(30px, 3vw, 4vw);
@@ -450,6 +456,7 @@
   position: absolute;
   right: 0;
   z-index: 100;
+  animation: showImg 9s ease 1s 1 forwards;
 }
 
 @keyframes showImg {

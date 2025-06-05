@@ -30,13 +30,27 @@ const genresIcons = new Map ([
 ])
 
 if(window.visualViewport.width <= 600){
-
     mobileMenu.classList.add("mov__mobile")
     navContent.classList.add("mov__navContent--hidden")
     showMenu.classList.remove("mov__displayMenu--hidden")
-}
+}else{
+    mobileMenu.classList.remove("mov__mobile")
+    navContent.classList.remove("mov__navContent--hidden")
+    showMenu.classList.add("mov__displayMenu--hidden")
+}   
 
-
+window.visualViewport.addEventListener("resize",(e)=>{
+    if(window.visualViewport.width <= 600){
+        mobileMenu.classList.add("mov__mobile")
+        navContent.classList.add("mov__navContent--hidden")
+        showMenu.classList.remove("mov__displayMenu--hidden")
+    }else{
+        mobileMenu.classList.remove("mov__mobile")
+        navContent.classList.remove("mov__navContent--hidden")
+        showMenu.classList.add("mov__displayMenu--hidden")
+    }
+    
+})
 showMenu.addEventListener("click",(e)=>{
     navContent.classList.toggle("mov__navContent--hidden")
     mobileMenu.classList.toggle("mov__mobile")
@@ -56,7 +70,7 @@ buscarButton.addEventListener("click",()=>{
     }
 })
 
-if(user == ""){
+if(!user){
     const body = document.getElementById("body")
     body.classList.add("logoff")
     body.classList.remove("login")

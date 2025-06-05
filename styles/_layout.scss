@@ -39,6 +39,10 @@
             top: 100px;
             left: 50px;
         }   
+        @include media(30rem){
+            top: 100px;
+            left: 25px;
+        }  
     }
     &__title{
         margin-bottom: 10px 0 0 40px;
