@@ -7,8 +7,11 @@ let counter = 0
 const asideOption = document.querySelectorAll(".mov__li")
 const prevPage = document.querySelector(".mov__pageNavPre")
 const nextPage = document.querySelector(".mov__pageNavNex")
-const buscarButton = document.querySelector(".mov__searchBotton")
+const buscarButton = document.getElementById("searchButton")
 const movIncharge = document.getElementById("grid")
+const navContent = document.querySelector(".mov__navContent")
+const showMenu = document.querySelector(".mov__displayMenu")
+const mobileMenu = document.querySelector(".mov")
 let movies = {}
 let pageCounter = 0
 const genresIcons = new Map ([
@@ -26,7 +29,25 @@ const genresIcons = new Map ([
     ["War", "🪖"],
 ])
 
+if(window.visualViewport.width <= 600){
 
+    mobileMenu.classList.add("mov__mobile")
+    navContent.classList.add("mov__navContent--hidden")
+    showMenu.classList.remove("mov__displayMenu--hidden")
+}
+
+
+showMenu.addEventListener("click",(e)=>{
+    navContent.classList.toggle("mov__navContent--hidden")
+    mobileMenu.classList.toggle("mov__mobile")
+    if(e.target.textContent == ">"){
+        e.target.textContent = "X"
+    }else{
+        e.target.textContent = ">"
+    }
+
+    
+})
 
 buscarButton.addEventListener("click",()=>{
     const input = document.getElementById("searchContent")
@@ -113,6 +134,7 @@ document.addEventListener("DOMContentLoaded",loadMovies)
 //         asideFiltering(e.target)
 //     })
 // })
+
 
 for(option of asideOption){
     option.addEventListener("click",(e)=>{

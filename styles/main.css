@@ -46,7 +46,7 @@
 }
 .header__title {
   margin-bottom: 10px 0 0 40px;
-  text-wrap-mode: nowrap;
+  font-size: clamp(30px, 3vw, 4vw);
 }
 .header__slo {
   margin-bottom: 40px;
@@ -122,19 +122,17 @@
 .well__flex {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-
-.mov {
-  height: 100svh;
-  display: grid;
-  grid-template-columns: 300px 0px 1fr;
-  overflow-y: scroll;
-  overflow-x: hidden;
+@media (max-width: 37rem) {
+  .well__flex {
+    flex-direction: column;
+  }
 }
-.mov__searchInput {
-  display: block;
-  width: 80%;
-  margin: 0 auto;
+.well__user {
+  font-size: clamp(16px, 2.1vw, 2.5vw);
+}
+.well__searchInput {
   height: 30px;
   letter-spacing: 5px;
   font-family: Poppins;
@@ -142,13 +140,7 @@
   box-sizing: border-box;
   padding-left: 10px;
 }
-.mov__searchInput:focus {
-  border-radius: 2px solid #f00;
-}
-.mov__searchBotton {
-  display: block;
-  width: 60%;
-  margin: 20px auto;
+.well__searchBotton {
   height: 30px;
   border-radius: 10px;
   background-color: #533e67;
@@ -156,11 +148,22 @@
   box-shadow: 0 2px 5px #000;
   transition: all 0.5s ease;
 }
-.mov__searchBotton:hover {
+.well__searchBotton:hover {
   background-color: transparent;
   color: #fff;
   transform: translateY(-5px);
   box-shadow: 0 7px 10px #000;
+}
+
+.mov {
+  height: 100svh;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.mov__mobile {
+  grid-template-columns: 50px 1fr;
 }
 .mov__nav {
   padding: 10px;
@@ -174,6 +177,38 @@
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mov__navContent {
+  display: block;
+}
+.mov__navContent--hidden {
+  display: none;
+}
+.mov__searchInput {
+  height: 30px;
+  letter-spacing: 5px;
+  font-family: Poppins;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding-left: 10px;
+}
+.mov__searchBotton {
+  height: 30px;
+  border-radius: 10px;
+  background-color: #533e67;
+  cursor: pointer;
+  box-shadow: 0 2px 5px #000;
+  transition: all 0.5s ease;
+}
+.mov__searchBotton:hover {
+  background-color: transparent;
+  color: #fff;
+  transform: translateY(-5px);
+  box-shadow: 0 7px 10px #000;
 }
 .mov__li {
   margin: 40px -10px 0 40px;
@@ -260,6 +295,9 @@
   font-size: 20px;
   font-weight: 900;
   transition: all 0.5s ease;
+}
+.mov__displayMenu--hidden {
+  display: none;
 }
 .mov__displayMenu:hover {
   background-color: #fff;
