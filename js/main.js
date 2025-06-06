@@ -230,7 +230,7 @@ function createMovieCard(movie){
     movCategoryFlex.classList.add("mov__categoryFlex")
     movCardButton.textContent = "VER MAS"
     movCardButton.classList.add("mov__cardButton")
-    movCardButton.href = `showdetails.html?id=${movie.id}`
+    movCardButton.href = `./showdetails.html?id=${movie.id}`
     movCardButton.target = "_blank"
     movie.genres.forEach(element => {
         if(genresIcons.get(element)){  

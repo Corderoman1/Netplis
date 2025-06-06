@@ -7,22 +7,23 @@
 
 .btn-normal{
     display: block;
-    max-width: 100px;
     width: 80%;
     height: 40px;
-    color: $color-principal;
+    margin: 20px auto;
+    color: #fff;
     text-decoration: none;
     text-align: center;
     padding: 10px 0 0 0;
     border-radius: 10px;
-    background-color: $color-secundario;
+    background-color: #000;
     border: $border;
     transition: .2s;
     cursor: pointer;
 }
 @include hover{
     .btn-normal:hover{
-        background-color: aqua;
+        background-color: transparent;
+        color: #000;
         border: $borderHover;
     }
 }
